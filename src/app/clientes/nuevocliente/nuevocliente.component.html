@@ -1,0 +1,55 @@
+<div class="card my-5">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-end mb-4">
+      <h3 class="mb-0">
+        {{ titulo }}
+        <!--Interpolación para enviar datos desde el .ts hacia el html-->
+      </h3>
+    </div>
+    <form [formGroup]="frm_Cliente" (ngSubmit)="grabar()">
+      <div class="row">
+        <!-- Teléfono -->
+        <div class="form-group mb-3">
+          <label class="form-label" for="Telefono">Teléfono</label>
+          <input formControlName="telefono" type="text" class="form-control" id="Telefono" placeholder="Ingrese el teléfono" />
+          <div *ngIf="frm_Cliente.get('telefono').invalid && frm_Cliente.get('telefono').touched">
+            <small *ngIf="frm_Cliente.get('telefono').hasError('required')" style="color: red">El teléfono es requerido</small>
+          </div>
+        </div>
+
+        <!-- Nombre -->
+        <div class="form-group mb-3">
+          <label class="form-label" for="Nombre">Nombre</label>
+          <input formControlName="nombre" type="text" class="form-control" id="Nombre" placeholder="Ingrese el nombre" />
+          <div *ngIf="frm_Cliente.get('nombre').invalid && frm_Cliente.get('nombre').touched">
+            <small *ngIf="frm_Cliente.get('nombre').hasError('required')" style="color: red">El nombre es requerido</small>
+          </div>
+        </div>
+
+        <!-- Apellido -->
+        <div class="form-group mb-3">
+          <label class="form-label" for="Apellido">Apellido</label>
+          <input formControlName="apellido" type="text" class="form-control" id="Apellido" placeholder="Ingrese el apellido" />
+          <div *ngIf="frm_Cliente.get('apellido').invalid && frm_Cliente.get('apellido').touched">
+            <small *ngIf="frm_Cliente.get('apellido').hasError('required')" style="color: red">El apellido es requerido</small>
+          </div>
+        </div>
+
+        <!-- Licencia -->
+        <div class="form-group mb-3">
+          <label class="form-label" for="Licencia">Licencia</label>
+          <input formControlName="licencia" type="text" class="form-control" id="Licencia" placeholder="Ingrese la licencia" />
+          <div *ngIf="frm_Cliente.get('licencia').invalid && frm_Cliente.get('licencia').touched">
+            <small *ngIf="frm_Cliente.get('licencia').hasError('required')" style="color: red">La licencia es requerida</small>
+          </div>
+        </div>
+
+        <!-- Botón de Grabar -->
+        <div class="d-grid mt-3">
+          <button type="submit" class="btn btn-primary" [disabled]="frm_Cliente.invalid">Grabar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
